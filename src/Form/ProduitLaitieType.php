@@ -17,6 +17,7 @@ class ProduitLaitieType extends AbstractType
             ->add('fromagesType')
             ->add('OrigineLait')
             ->add('name')
+            ->add('prix')
             ->add('image', FileType::class, [
                 'label' => 'Image (fichier JPG ou PNG)',
                 'mapped' => false, // Le champ n'est pas mappé à une propriété de l'entité

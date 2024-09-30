@@ -27,16 +27,17 @@ class ProduitLaitier
     /**
      * @var Collection<int, Images>
      */
-    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'relation')]
+    #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'produitLaitier')]
     private Collection $images;
 
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    #[ORM\Column]
+    private ?float $prix = null;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -91,7 +92,7 @@ class ProduitLaitier
     {
         if (!$this->images->contains($image)) {
             $this->images->add($image);
-            $image->setRelation($this);
+            $image->setProduitLaitierId($this);
         }
 
         return $this;
@@ -101,23 +102,31 @@ class ProduitLaitier
     {
         if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($image->getRelation() === $this) {
-                $image->setRelation(null);
+            if ($image->getProduitLaitierId() === $this) {
+                $image->setProduitLaitierId(null);
             }
         }
 
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getPrix(): ?float
     {
-        return $this->image;
+        return $this->prix;
     }
 
-    public function setImage(string $image): static
+    public function setPrix(float $prix): static
     {
-        $this->image = $image;
+        $this->prix = $prix;
 
         return $this;
     }
+
+    
+   
+
+    
+
+    
+    
 }

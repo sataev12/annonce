@@ -16,9 +16,9 @@ class Images
     #[ORM\Column(length: 255)]
     private ?string $url = null;
 
-    #[ORM\ManyToOne(inversedBy: 'images')]
+    #[ORM\ManyToOne(targetEntity: ProduitLaitier::class, inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?ProduitLaitier $relation = null;
+    private ?ProduitLaitier $produitLaitier = null;
 
     public function getId(): ?int
     {
@@ -30,21 +30,21 @@ class Images
         return $this->url;
     }
 
-    public function setUrl(string $url): static
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function getRelation(): ?ProduitLaitier
+    public function getProduitLaitier(): ?ProduitLaitier
     {
-        return $this->relation;
+        return $this->produitLaitier;
     }
 
-    public function setRelation(?ProduitLaitier $relation): static
+    public function setProduitLaitier(?ProduitLaitier $produitLaitier): self
     {
-        $this->relation = $relation;
+        $this->produitLaitier = $produitLaitier;
 
         return $this;
     }
