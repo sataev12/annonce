@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitLaitierController!{% endblock %}
+
+{% block body %}
+
+
+<div class="presentation">
+    <h1>Ajouter Fromage</h1>
+</div>
+
+<div class="ajout-fromage">
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Valider</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

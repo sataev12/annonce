@@ -30,6 +30,9 @@ class ProduitLaitier
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'relation')]
     private Collection $images;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -102,6 +105,18 @@ class ProduitLaitier
                 $image->setRelation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }
