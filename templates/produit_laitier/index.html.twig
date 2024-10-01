@@ -19,7 +19,7 @@
     
     {% for fromage in fromages %}
         <h3>{{ fromage.name }}</h3>
-        <p>{{ fromage.prix }}</p>
+        <p>Prix {{fromage.prix}} €</p>
         <div class="ajout-fromage">
             {% if fromage.images|length > 0 %}
                 <img src="{{ asset(fromage.images[0].url) }}" alt="Image de {{ fromage.name }}">
